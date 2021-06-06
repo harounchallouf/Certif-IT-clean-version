@@ -1,0 +1,11 @@
+.login-form {
+  background-color: #fafafa;
+}
+.mouse-hover{
+  cursor: pointer;
+}
+.btn-align-center{
+  text-align: center;
+  position: realative;
+  
+}
