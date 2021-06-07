@@ -45,7 +45,7 @@ class AddComments extends Component {
                         <Form.Group controlId="content">
                             <Form.Control as='textarea' name="content" value={this.state.comment.content} onChange={this.handleInputChange} placeholder="Write your comment..." />
                         </Form.Group>
-                        <Button className="btn start-course" type="submit"> Submit</Button>
+                        <Button className="cmnt-btn" type="submit"> Commenter</Button>
                     </Form>
                 </Col>
             </Row>

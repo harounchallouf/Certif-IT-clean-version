@@ -43,11 +43,11 @@ class EditTeacherForm extends Component {
             .then(() => {
                 this.props.storeUser(this.props.loggedUser)
                 this.props.history.push(`/teachers/${teacherId}`)
-                this.props.handleToast(true, 'Edit successful!', '#d4edda')
+                this.props.handleToast(true, 'Modification terminé!', '#d4edda')
             })
             .catch(() => {
                 this.props.history.push(`/teachers/${teacherId}`)
-                this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+                this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
             })
     }
 
@@ -75,57 +75,57 @@ class EditTeacherForm extends Component {
                 <Container>
                     <Row>
                         <Col md={{ span: 8, offset: 2 }}>
-                            <h1 className="mt-5">Edit your teacher Profile</h1>
+                            <h1 className="mt-5">Modifier votre profile Instructeur</h1>
                             <hr />
 
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group controlId="name">
-                                    <Form.Label>Name</Form.Label>
+                                    <Form.Label>Nom</Form.Label>
                                     <Form.Control type="text" name="name" value={this.state.teacher.name} onChange={this.handleInputChange} required />
                                 </Form.Group>
                                 <Form.Group controlId="surname">
-                                    <Form.Label>Surname</Form.Label>
+                                    <Form.Label>Prénom</Form.Label>
                                     <Form.Control type="text" name="surname" value={this.state.teacher.surname} onChange={this.handleInputChange} required />
                                 </Form.Group>
 
                                 <Form.Group controlId="jobOccupation">
-                                    <Form.Label>Job Occupation</Form.Label>
+                                    <Form.Label> Occupation</Form.Label>
                                     <Form.Control type="text" name="jobOccupation" value={this.state.teacher.jobOccupation} onChange={this.handleInputChange} />
                                 </Form.Group>
                                 <Form.Group controlId="description">
-                                    <Form.Label>About me</Form.Label>
+                                    <Form.Label>A propos de moi</Form.Label>
                                     <Form.Control as="textarea" name="description" value={this.state.teacher.description} onChange={this.handleInputChange} />
                                 </Form.Group>
 
                                 <Tabs className="mt-4" defaultActiveKey="linkedin" id="Personal Links">
                                     <Tab eventKey="linkedin" title="Linkedin">
                                         <Form.Group controlId="linkedin">
-                                            <Form.Label>Linkedin URL</Form.Label>
+                                            <Form.Label>Compte Linkedin</Form.Label>
                                             <Form.Control type="text" name="linkedin" value={this.state.linkedin} onChange={this.handleInputChange} />
                                         </Form.Group>
                                     </Tab>
-                                    <Tab eventKey="website" title="Website">
+                                    <Tab eventKey="website" title="Site web">
                                         <Form.Group controlId="website">
-                                            <Form.Label>Website URL</Form.Label>
+                                            <Form.Label>Site web</Form.Label>
                                             <Form.Control type="text" name="website" value={this.state.website} onChange={this.handleInputChange} />
                                         </Form.Group>
                                     </Tab>
                                     <Tab eventKey="youtube" title="Youtube">
                                         <Form.Group controlId="linkedin">
-                                            <Form.Label>Youtube URL</Form.Label>
+                                            <Form.Label>Chaîne YouTube</Form.Label>
                                             <Form.Control type="text" name="youtube" value={this.state.youtube} onChange={this.handleInputChange} />
                                         </Form.Group>
                                     </Tab>
                                 </Tabs>
 
                                 <Form.Group>
-                                    <Form.Label>Imagen (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
+                                    <Form.Label>Image (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
 
-                                <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}> {this.state.uploadingActive ? 'Image loading...' : 'Edit Teacher profile'}</Button>
+                                <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}> {this.state.uploadingActive ? 'Chargement de l\'image ...' : 'Modifier profile Instructeur'}</Button>
                             </Form>
-                            {this.state.uploadingActive || <Link to='/profile' className="btn btn-outline-dark mt-5" disabled>Go back</Link>}
+                            {this.state.uploadingActive || <Link to='/profile' className="btn btn-outline-dark mt-5" disabled>Retour</Link>}
                         </Col>
                     </Row>
 

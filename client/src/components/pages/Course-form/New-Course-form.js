@@ -41,7 +41,7 @@ class NewCourseForm extends Component {
             .saveCourse(this.state.course)
             .then(() => {
                 this.props.history.push('/courses')
-                this.props.handleToast(true, 'New course created!', '#d4edda')
+                this.props.handleToast(true, 'Nouveau cour crée!', '#d4edda')
             })
             .catch(err => this.props.handleToast(true, err.response.data.message[0].msg, '#f8d7da'))
     }
@@ -74,12 +74,12 @@ class NewCourseForm extends Component {
                             <hr />
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group controlId="title">
-                                    <Form.Label>Title</Form.Label>
+                                    <Form.Label>Titre</Form.Label>
                                     <Form.Control type="text" name="title" value={this.state.title} onChange={this.handleInputChange} placeholder='Eye-catching title' required />
                                 </Form.Group>
 
                                 <Form.Group controlId="lead">
-                                    <Form.Label>Lead Paragraph</Form.Label>
+                                    <Form.Label>Paragraphe Principal</Form.Label>
                                     <Form.Control type="text" name="lead" value={this.state.lead} onChange={this.handleInputChange} placeholder='Eye-catching phrase' required />
                                 </Form.Group>
 
@@ -90,9 +90,9 @@ class NewCourseForm extends Component {
                                 <Row>
                                     <Col md={6}>
                                         <Form.Group controlId='category'>
-                                            <Form.Label>Category</Form.Label>
+                                            <Form.Label>Catégorie</Form.Label>
                                             <Form.Control as='select' name='category' value={this.state.category} onChange={this.handleInputChange}>
-                                                <option>Choose one option</option>
+                                                <option>Choisir une option</option>
                                                 <option value='Design' >Design</option>
                                                 <option value='Development' >Development</option>
                                                 <option value='Marketing' >Marketing</option>
@@ -103,46 +103,46 @@ class NewCourseForm extends Component {
                                     </Col>
                                     <Col md={6}>
                                         <Form.Group controlId='difficultyLevel'>
-                                            <Form.Label>Level</Form.Label>
+                                            <Form.Label>Niveau</Form.Label>
                                             <Form.Control as='select' name='difficultyLevel' value={this.state.difficultyLevel} onChange={this.handleInputChange}>
-                                                <option>Choose one option</option>
-                                                <option value='All levels' >All levels</option>
-                                                <option value='Beginner' >Beginner</option>
-                                                <option value='Intermidiate' >Intermidiate</option>
-                                                <option value='Advanced' >Advanced</option>
+                                                <option>Choisir une option</option>
+                                                <option value='All levels' >Tout niveaux</option>
+                                                <option value='Beginner' >Débutant</option>
+                                                <option value='Intermidiate' >Intermédiaire</option>
+                                                <option value='Advanced' >Avancé</option>
                                             </Form.Control>
                                         </Form.Group>
                                     </Col>
                                 </Row>
                                 <Form.Group controlId="whatYouWillLearn">
-                                    <Form.Label>Main Topics</Form.Label>
+                                    <Form.Label>Sujets Principaux</Form.Label>
                                     <Form.Control as='textarea' name="whatYouWillLearn" value={this.state.whatYouWillLearn} onChange={this.handleInputChange} placeholder='The main topics your students will learn' required />
-                                    <Form.Text id='whatYouWillLearn' muted>Separate topics with commas</Form.Text>
+                                    <Form.Text id='whatYouWillLearn' muted>  Séparez les sujets par des virgules </Form.Text>
                                 </Form.Group>
                                 <Row>
                                     <Col md={6}>
                                         <Form.Group controlId="price">
-                                            <Form.Label>Price</Form.Label>
+                                            <Form.Label>Prix</Form.Label>
                                             <Form.Control type="number" name="price" value={this.state.price} onChange={this.handleInputChange} min='0' placeholder="Don't be greedy..." required />
                                         </Form.Group>
                                     </Col>
                                     <Col md={6}>
                                         <Form.Group controlId="duration">
-                                            <Form.Label>Duration</Form.Label>
+                                            <Form.Label>Durée</Form.Label>
                                             <Form.Control type="number" name="duration" value={this.state.duration} onChange={this.handleInputChange} min='0' placeholder='How many hours?' required />
                                         </Form.Group>
                                     </Col>
                                 </Row>
                                 <Form.Group controlId="requirements">
-                                    <Form.Label>Requirements</Form.Label>
+                                    <Form.Label>Prérequis</Form.Label>
                                     <Form.Control as='textarea' name="requirements" value={this.state.requirements} onChange={this.handleInputChange} placeholder='What is necessary to stay on course?' />
-                                    <Form.Text id='requirements' muted>Separate requirements with commas</Form.Text>
+                                    <Form.Text id='requirements' muted>Séparez les prérequis par des virgules</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group controlId="videos">
                                     <Form.Label>Videos</Form.Label>
                                     <Form.Control as='textarea' name="videos" value={this.state.videos} onChange={this.handleInputChange} placeholder='Include here the URLs of your content (audio or video)' />
-                                    <Form.Text id='videos' muted>Separate URLs with commas</Form.Text>
+                                    <Form.Text id='videos' muted>Séparez les liens URLs par des virgules</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group>
@@ -150,9 +150,9 @@ class NewCourseForm extends Component {
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
 
-                                <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'Image loading...' : 'Create course'}</Button>
+                                <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'Chargement image...' : 'Créer le cours !'}</Button>
                             </Form>
-                            {this.state.uploadingActive || <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-outline-dark mt-5" disabled>Go back</Link>}
+                            {this.state.uploadingActive || <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-outline-dark mt-5" disabled>Retour</Link>}
                         </Col>
                     </Row>
 
