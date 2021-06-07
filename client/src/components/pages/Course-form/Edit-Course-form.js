@@ -39,7 +39,7 @@ class EditCourseForm extends Component {
             .then(res => this.setState({ course: res.data }))
             .catch(() => {
                 this.props.history.push('/profile')
-                this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+                this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
             })
     }
 
@@ -52,11 +52,11 @@ class EditCourseForm extends Component {
             .editCourse(course_id, this.state.course)
             .then(() => {
                 this.props.history.push('/courses')
-                this.props.handleToast(true, 'Edit successful!', '#d4edda')
+                this.props.handleToast(true, 'Modification réussie !', '#d4edda')
             })
             .catch(() => {
                 this.props.history.push(`/teachers/${this.props.teacherInfo._id}`)
-                this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+                this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
             })
     }
 
@@ -85,16 +85,16 @@ class EditCourseForm extends Component {
                 <Container>
                     <Row>
                         <Col lg={{ span: 8, offset: 2 }}>
-                            <h1 className="mt-5">Edit Course</h1>
+                            <h1 className="mt-5">Modifier le cour</h1>
                             <hr />
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Group controlId="title">
-                                    <Form.Label>Title</Form.Label>
+                                    <Form.Label>Titre</Form.Label>
                                     <Form.Control type="text" name="title" value={this.state.course.title} onChange={this.handleInputChange} required />
                                 </Form.Group>
 
                                 <Form.Group controlId="lead">
-                                    <Form.Label>Lead Paragraph</Form.Label>
+                                    <Form.Label>Paragraphe principal</Form.Label>
                                     <Form.Control type="text" name="lead" value={this.state.course.lead} onChange={this.handleInputChange} required />
                                 </Form.Group>
 
@@ -105,9 +105,9 @@ class EditCourseForm extends Component {
                                 <Row>
                                     <Col md={6}>
                                         <Form.Group controlId='category'>
-                                            <Form.Label>Category</Form.Label>
-                                            <Form.Control as='select' name='category' value={this.state.course.category} onChange={this.handleInputChange}>
-                                                <option>Choose one option</option>
+                                            <Form.Label>Catégorie</Form.Label>
+                                            <Form.Control as='select' name='category' value={this.state.course.category} onChange={this.handleInputChange} >
+                                                <option> Choisir une catégorie </option>
                                                 <option value='Design' >Design</option>
                                                 <option value='Development' >Development</option>
                                                 <option value='Marketing' >Marketing</option>
@@ -118,56 +118,56 @@ class EditCourseForm extends Component {
                                     </Col>
                                     <Col md={6}>
                                         <Form.Group controlId='difficultyLevel'>
-                                            <Form.Label>Level</Form.Label>
+                                            <Form.Label>Niveau</Form.Label>
                                             <Form.Control as='select' name='difficultyLevel' value={this.state.course.difficultyLevel} onChange={this.handleInputChange}>
-                                                <option>Choose one option</option>
-                                                <option value='All levels'>All levels</option>
-                                                <option value='Beginner'>Beginner</option>
-                                                <option value='Intermidiate'>Intermidiate</option>
-                                                <option value='Advanced'>Advanced</option>
+                                                <option>Choisir le niveau</option>
+                                                <option value='All levels'>Tout les niveaux</option>
+                                                <option value='Beginner'>Débutant</option>
+                                                <option value='Intermidiate'>Intermédiaire</option>
+                                                <option value='Advanced'>Avancé</option>
                                             </Form.Control>
                                         </Form.Group>
                                     </Col>
                                 </Row>
                                 <Form.Group controlId="whatYouWillLearn">
-                                    <Form.Label>Main Topics</Form.Label>
+                                    <Form.Label>Sujets principaux</Form.Label>
                                     <Form.Control as='textarea' name="whatYouWillLearn" value={this.state.course.whatYouWillLearn} onChange={this.handleInputChange} required />
-                                    <Form.Text id='whatYouWillLearn' muted>Separate topics with commas</Form.Text>
+                                    <Form.Text id='whatYouWillLearn' muted>Séparez les sujets par des virgules</Form.Text>
                                 </Form.Group>
                                 <Row>
                                     <Col md={6}>
                                         <Form.Group controlId="price">
-                                            <Form.Label>Price</Form.Label>
+                                            <Form.Label>Prix</Form.Label>
                                             <Form.Control type="number" name="price" value={this.state.course.price} onChange={this.handleInputChange} min='0' required />
                                         </Form.Group>
                                     </Col>
                                     <Col md={6}>
                                         <Form.Group controlId="duration">
-                                            <Form.Label>Duration</Form.Label>
+                                            <Form.Label>Durée</Form.Label>
                                             <Form.Control type="number" name="duration" value={this.state.course.duration} onChange={this.handleInputChange} min='0' required />
                                         </Form.Group>
                                     </Col>
                                 </Row>
                                 <Form.Group controlId="requirements">
-                                    <Form.Label>Requirements</Form.Label>
+                                    <Form.Label>Prérequis</Form.Label>
                                     <Form.Control as='textarea' name="requirements" value={this.state.course.requirements} onChange={this.handleInputChange} />
-                                    <Form.Text id='requirements' muted>Separate requirements with commas</Form.Text>
+                                    <Form.Text id='requirements' muted>Séparez les prérequis par des virgules</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group controlId="requirements">
                                     <Form.Label>Videos</Form.Label>
                                     <Form.Control as='textarea' name="videos" value={this.state.course.videos} onChange={this.handleInputChange} />
-                                    <Form.Text id='videos' muted>Separate URLs with commas</Form.Text>
+                                    <Form.Text id='videos' muted>Séparez les liens URL par des virgules</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group>
-                                    <Form.Label>Imagen (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
+                                    <Form.Label>Image (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
 
-                                <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'Image loading...' : 'Confirm Edition'}</Button>
+                                <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'chargement image...' : 'Confirmer'}</Button>
                             </Form>
-                            {this.state.uploadingActive || <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-outline-dark mt-5" disabled>Go back</Link>}
+                            {this.state.uploadingActive || <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-outline-dark mt-5" disabled>Retour</Link>}
                         </Col>
                     </Row>
                 </Container>

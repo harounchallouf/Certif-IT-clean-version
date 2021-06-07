@@ -88,14 +88,14 @@
     height: 2.7rem;
     justify-content: center;
     color: #fff;
-    background-color: #ec5252;
-    border: 1px solid #ec5252;
+    background-color: #1bbd28;
+    border: 1px solid #1bbd28;
 }
 
 .course-add:hover{
-    color: #ec5252;
-    background-color: #fff;
-    border: 1px solid #ec5252;
+    color: #fff;
+    background-color: #1bbd28;
+    border: 1px solid #1bbd28;
     text-decoration: none;
 }
 
@@ -141,8 +141,8 @@
     font-weight: 700px;
     height: 2.7rem;
     justify-content: center;
-    color: #ec5252;
-    background-color: #fff;
+    color: #fff;
+    background-color: #ec5252;
     border: 1px solid #ec5252;
 }
 

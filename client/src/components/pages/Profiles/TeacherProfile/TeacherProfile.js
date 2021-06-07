@@ -126,9 +126,10 @@ class TeacherProfile extends Component {
 
                       {this.props.teacherInfo && this.props.teacherInfo._id === this.state.teacher._id &&
                         <>
-                          <Link to='/profile-teacher/edit-teacher' className="teacher-edit mt-5">Edit details</Link>
-                          <Button onClick={() => this.handleModal(true)} className="teacher-delete">Delete</Button>
-                          <Link to='/profile-teacher/create-course' className="course-add mt-5">Add course</Link>
+                          <Link to='/profile-teacher/edit-teacher' className="teacher-edit mt-5">Modifier profile</Link>
+                          <Button onClick={() => this.handleModal(true)} className="teacher-delete">Supprimer compte Instructeur</Button>
+                          
+                          <Link to='/profile-teacher/create-course' className="course-add mt-5">Créer un cour</Link>
                         </>}
                     </Row>
                   </aside>

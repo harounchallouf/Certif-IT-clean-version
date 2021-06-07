@@ -70,8 +70,8 @@ class CourseDetails extends Component {
                                         <h1>{this.state.course.title}</h1>
                                         <p><em> {this.state.course.lead}</em></p>
 
-                                        {this.state.course.owner && <p style={{ color: '#73726c', fontWeight: 700 }}>Created by <Link to={`/teachers/${this.state.course.owner._id}`}>{this.state.course.owner.name} {this.state.course.owner.surname}</Link></p>}
-                                        <p><strong>Category:</strong> {this.state.course.category} | <strong>Difficulty Level:</strong>  {this.state.course.difficultyLevel} | <strong>Price:</strong>  {this.state.course.price} TND | <strong>Duration:</strong>  {this.state.course.duration} hrs.</p>
+                                        {this.state.course.owner && <p style={{ color: '#73726c', fontWeight: 700 }}>Crée par <Link to={`/teachers/${this.state.course.owner._id}`}>{this.state.course.owner.name} {this.state.course.owner.surname}</Link></p>}
+                                        <p><strong>Catégorie:</strong> {this.state.course.category} | <strong>Niveau:</strong>  {this.state.course.difficultyLevel} | <strong>Prix:</strong>  {this.state.course.price} TND | <strong>Durée:</strong>  {this.state.course.duration} heures.</p>
                                     </Col>
                                     <Col md={{ span: 4 }} >
                                         <img className="mb-3 course-img" src={this.state.course.imageUrl} alt={this.state.course.title} />
@@ -85,19 +85,19 @@ class CourseDetails extends Component {
                                         <h3 className="mt-5 mb-3">Description</h3>
                                         <p>{this.state.course.description}</p>
 
-                                        <h3 className="mt-5 mb-4">What you will learn:</h3>
+                                        <h3 className="mt-5 mb-4">Ce que vous apprendrez:</h3>
                                         <ul className="whatYouWillLearn">
                                             {this.state.course.whatYouWillLearn.map((elm, idx) => <li key={idx}><img src="https://res.cloudinary.com/dodneiokm/image/upload/v1607883391/project3-ironhack/checked_ib75gx.png" alt='Checked icon' /><p>{elm}</p></li>)}
                                         </ul>
-                                        <h3 className="mt-4 mb-4">Requirements:</h3>
+                                        <h3 className="mt-4 mb-4">Prérequis:</h3>
                                         <ul className="requirements mb-4">
                                             {this.state.course.requirements.map((elm, idx) => <li key={idx}><img src="https://res.cloudinary.com/dodneiokm/image/upload/v1607887317/project3-ironhack/double-check_tm7qmy.png" alt='Double-Checked icon' /><p>{elm}</p></li>)}
                                         </ul>
 
                                         {this.props.loggedUser ?
-                                            <Button onClick={this.toggleInput} className="mt-3 mb-3 start-course" >{this.state.showInput ? 'Close media' : 'See course media'}</Button>
+                                            <Button onClick={this.toggleInput} className="mt-3 mb-3 start-course" >{this.state.showInput ? 'Fermer les supports de cour' : 'Voir les supports de cour'}</Button>
                                             :
-                                            <Button onClick={this.toggleInput} disabled className="mt-3 mb-3 start-course" >Log In to see media</Button>
+                                            <Button onClick={this.toggleInput} disabled className="mt-3 mb-3 start-course" >Connectez-vous pour voir les supports de cour</Button>
                                         }
 
                                         {/* Videos */}
@@ -121,7 +121,7 @@ class CourseDetails extends Component {
                                                                     alt="play icon"
                                                                     
                                                                 />
-                                                                <p style={{ display: 'inline-flex' }} >Lesson {idx + 1}</p>
+                                                                <p style={{ display: 'inline-flex' }} >Vidéo {idx + 1}</p>
                                                             </Card.Header>
                                                         )}
                                                     </Col>
@@ -135,7 +135,7 @@ class CourseDetails extends Component {
 
                             {/* Comments */}
 
-                            <h3 className="mt-5 mb-3">Comments</h3>
+                            <h3 className="mt-5 mb-3">Commentaires</h3>
 
                             {this.state.comments.length > 0 ?
                                 this.state.comments.map(elm =>
@@ -152,7 +152,7 @@ class CourseDetails extends Component {
                                                 </div>
                                                 {this.props.loggedUser && this.props.loggedUser._id === elm.user._id ?
 
-                                                    <Button onClick={() => this.deleteComment(elm._id)} variant="outline-danger" size="sm">Delete</Button>
+                                                    <Button onClick={() => this.deleteComment(elm._id)} variant="outline-danger" size="sm">Effacer Commentaire</Button>
 
                                                     : null
                                                 }
@@ -161,7 +161,7 @@ class CourseDetails extends Component {
                                         }
                                     </div>
                                 )
-                                : <p className="mb-3 ml-3">No comments yet</p>
+                                : <p className="mb-3 ml-3">Aucun commentaire pour l'instant</p>
                             }
 
                             {this.props.loggedUser &&
@@ -170,7 +170,7 @@ class CourseDetails extends Component {
                                 </section>
                             }
 
-                            <Link to="/courses" className="btn btn-sm btn-outline-dark mt-5">Go back</Link>
+                            <Link to="/courses" className="btn btn-sm btn-outline-dark mt-5">Retour</Link>
                         </>
                         :
                         <Loader />

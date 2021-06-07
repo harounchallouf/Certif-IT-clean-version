@@ -39,20 +39,20 @@ class LoginForm extends Component {
                         <Row className='justify-content-center mt-3'>
                             <figure className='form-logo'><img src={logo} alt='Freedemy logo' /></figure>
                         </Row>
-                        <h1 className='text-center'>Log In</h1>
+                        <h1 className='text-center'>Se connecter</h1>
                         <hr />
 
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="username">
-                                <Form.Label>Usermane</Form.Label>
+                                <Form.Label>Nom d'utilisateur</Form.Label>
                                 <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
                             </Form.Group>
                             <Form.Group controlId="password">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>Mot de passe</Form.Label>
                                 <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
                             <div className="d-flex justify-content-between align-items-center">
-                                <Button variant="primary" type="submit" className="btn-block">Enter</Button>
+                                <Button variant="primary" type="submit" className="btn-block">Se connecter</Button>
                                 {/* <Form.Text id='loginHelpText' muted className="mouse-hover">Click outside to cancel</Form.Text> */}
                             </div>
                         </Form>

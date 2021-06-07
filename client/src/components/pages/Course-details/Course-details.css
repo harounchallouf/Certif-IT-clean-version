@@ -3,7 +3,7 @@
 }
 
 .course-details .header{
-    background-color:#a2dce6;
+    background-color:#224cd8a9;
     padding:40px;
     border: 1px solid #dee2e6 ;
     border-radius: .25rem;
@@ -101,19 +101,19 @@
     height: 2.7rem;
     justify-content: center;
     color: #fff;
-    background-color: #ec5252;
-    border: 1px solid #ec5252;
+    background-color: #218840;
+    border: 1px solid #218840;
 }
 
 .start-course:hover{
-    color: #ec5252;
-    background-color: #fff;
-    border: 1px solid #ec5252;
+    color: #fff;
+    background-color: #218840;
+    border: 1px solid #218840;
 }
 
 .start-course:focus{
-    color: #ec5252;
-    background-color: #fff;
+    color: #fff;
+    background-color: #ec5252;
     border: 1px solid #ec5252;
 }
 

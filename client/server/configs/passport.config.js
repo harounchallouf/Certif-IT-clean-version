@@ -32,7 +32,7 @@ module.exports = app => {
                 }
                 return next(null, user)
             })
-            .catch(err => res.status(500).json(err))
+            .catch(err => req.status(500).json(err))
     }))
 
     app.use(passport.initialize())

@@ -4,13 +4,12 @@ const uploader = require('../configs/cloudinary.config')
 const { isLoggedIn } = require('../middleware/custom-middleware')
 
 
-router.post('/upload', isLoggedIn, uploader.single("imageUrl"), (req, res, next) => {
+router.post('/upload', isLoggedIn, uploader.single('imageUrl'), (req, res, next) => {
     if (!req.file) {
-        res.status(500).json({ message: 'Error loading the file' })
-        return
+      res.status(500).json({ message: 'Error loading the file' })
     }
-
-    res.json({ secure_url: req.file.path })
+    else{
+     res.json({ imageUrl: req.file.path })}
 })
 
 
