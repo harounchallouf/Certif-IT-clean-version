@@ -1,6 +1,5 @@
 import React from "react";
 import "./HeroSection.css";
-// import "../../App.css";
 import Image from "../../../assets/banner.jpg";
 import { Button } from "./Button";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
