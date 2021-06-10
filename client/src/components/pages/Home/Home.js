@@ -11,6 +11,8 @@ import Hero from './Hero'
 import Features from './Features'
 import Banner from './Banner'
 
+import HeroSection from './HeroSection'
+
 
 
 const Home = props => {
@@ -28,8 +30,8 @@ const Home = props => {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 
-      <Hero title='Aspire for more' p1='Learning keeps you in the lead.' p2='Get in-demand skills to impress anyone.' />
-
+      {/* <Hero title='Aspire for more' p1='Learning keeps you in the lead.' p2='Get in-demand skills to impress anyone.' /> */}
+<HeroSection/>
       <section className="container-fluid about" >
         <Container>
           <Row className="d-flex align-items-center">
@@ -39,9 +41,9 @@ const Home = props => {
             </Col>
             <Col md={6}>
 
-              <h2 className="mb-3">About us</h2>
-              <p>We Are Freedemy, an on-line learning platform. We help organizations of all kinds prepare for the ever-evolving future of work.</p>
-              <p>Connecting millions of students to the skills they need to succeed. We offer the opportunity to open access to education, especially for those whose opportunities have historically been limited. To do this, we’ve partnered with a number of organizations.</p>
+              <h2 className="mb-3">A propos</h2>
+              <p>Certif IT est une plateforme de certification en ligne. Nous aidons les organisations de toutes sortes à se préparer à l'avenir du travail en constante évolution.</p>
+              <p>Connecter des millions d'apprenants aux compétences dont ils ont besoin pour réussir. Nous offrons la possibilité d'ouvrir l'accès à la certification, en particulier pour ceux dont les opportunités ont été historiquement limitées.</p>
 
             </Col>
           </Row>
