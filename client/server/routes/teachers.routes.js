@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Teacher = require('../models/teacher.model')
+const User = require('../models/user.model')
 const Course = require('../models/course.model')
 const { check, validationResult } = require('express-validator')
 const { isLoggedIn, isTeacher, isValidId } = require('../middleware/custom-middleware')
@@ -48,11 +49,24 @@ router.post('/newTeacher', isLoggedIn,
         res.status(400).json({ message: passCheck.errors })
         return
     }
-        
-    Teacher
-        .create(req.body)
-        .then(response => res.json(response))
-        .catch(err => res.status(500).json(err))
+    return User.findById(req.body.user)
+    .then((u) => {
+        if (!u) {
+            return res.status(404).json({message: 'User not found.'})
+        }
+        console.log(u)
+        console.log(req.body)
+        Teacher
+            .create({
+                ...req.body,
+                password: u.password,
+                userType: 'Admin'
+            })
+            .then(response => res.json(response))
+            .catch(err => res.status(500).json(err))
+
+    })
+    .catch(err => res.status(500).json(err))
 })
 
 router.put('/editTeacher/:id', isLoggedIn, isTeacher, isValidId, (req, res) => {

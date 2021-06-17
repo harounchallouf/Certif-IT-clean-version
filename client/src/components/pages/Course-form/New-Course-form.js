@@ -7,12 +7,18 @@ import Loader from '../../shared/Spinner/Loader'
 import { Link } from 'react-router-dom'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import './New-Course-form.css'
-
+import Modal from "react-modal"
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import ModalBody from 'react-bootstrap/ModalBody';
+import Examform from './Exam-form'
+import EditQuiz from './EditQuiz'
 
 class NewCourseForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            questionModalIsOpen: false,
+            modalIsOpen: false,
             course: {
                 title: '',
                 lead: '',
@@ -24,9 +30,11 @@ class NewCourseForm extends Component {
                 duration: '',
                 requirements: [],
                 imageUrl: this.props.teacherInfo.imageUrl || '',
-                owner: this.props.teacherInfo._id || ''
+                owner: this.props.teacherInfo._id || '',
+                quizId: null
             },
-            uploadingActive: false
+            uploadingActive: false,
+            loggedUser: this.props.loggedUser
         }
         this.coursesService = new CoursesService()
         this.filesService = new FilesService()
@@ -62,7 +70,6 @@ class NewCourseForm extends Component {
             })
             .catch(err => this.props.handleToast(true, err.response.data.message, '#f8d7da'))
     }
-
 
     render() {
         return (
@@ -140,7 +147,7 @@ class NewCourseForm extends Component {
                                 </Form.Group>
 
                                 <Form.Group controlId="videos">
-                                    <Form.Label>Videos</Form.Label>
+                                    <Form.Label>Vidéos</Form.Label>
                                     <Form.Control as='textarea' name="videos" value={this.state.videos} onChange={this.handleInputChange} placeholder='Include here the URLs of your content (audio or video)' />
                                     <Form.Text id='videos' muted>Séparez les liens URLs par des virgules</Form.Text>
                                 </Form.Group>
@@ -149,7 +156,53 @@ class NewCourseForm extends Component {
                                     <Form.Label>Image (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
+                                {(this.state.course.quizId) ?
+                                    (<Button className="mt-3 add-exam" onClick={() => this.setState({ questionModalIsOpen: true })}>{this.state.examName} - Ajouter questions</Button>) :
+                                    (<Button className="mt-3 add-exam" onClick={() => this.setState({ modalIsOpen: true })}>Ajouter Examen</Button>)}
+                                <Modal onRequestClose={() => {
+                                    this.setState({
+                                        modalIsOpen: false,
+                                    })
+                                }} isOpen={this.state.modalIsOpen}>
+                                    <ModalHeader onHide={() => {
+                                        this.setState({
+                                            modalIsOpen: false,
+                                        })
+                                    }} closeButton>
 
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <Examform loggedUser={this.state.loggedUser} close={(id, name) => {
+                                            this.setState({
+                                                course: {
+                                                    ...this.state.course,
+                                                    quizId: id
+                                                },
+                                                examName: name,
+                                                modalIsOpen: false,
+                                                questionModalIsOpen: true
+                                            });
+                                        }} />
+                                    </ModalBody>
+                                </Modal>
+                                <Modal onRequestClose={() => {
+                                    this.setState({
+                                        questionModalIsOpen: false,
+                                    })
+                                }} isOpen={this.state.questionModalIsOpen}>
+                                    <ModalHeader onHide={() => {
+                                            this.setState({
+                                                questionModalIsOpen: false,
+                                            })
+                                        }} closeButton>
+
+                                        </ModalHeader>
+                                    <ModalBody>
+                                    <EditQuiz loggedUser={this.state.loggedUser} quizId={this.state.course.quizId} close={() => {
+                                        this.setState();
+                                    }} />
+                                    </ModalBody>
+                                </Modal>
                                 <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'Chargement image...' : 'Créer le cours !'}</Button>
                             </Form>
                             {this.state.uploadingActive || <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-outline-dark mt-5" disabled>Retour</Link>}

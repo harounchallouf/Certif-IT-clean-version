@@ -6,11 +6,20 @@ import CoursesService from './../../../service/courses.service'
 import FilesService from './../../../service/upload.service'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import Loader from './../../shared/Spinner/Loader'
+import Modal from "react-modal"
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import ModalBody from 'react-bootstrap/ModalBody';
+import Examform from './Exam-form'
+import EditQuiz from './EditQuiz'
+import './New-Course-form.css'
+
 
 class EditCourseForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            modalIsOpen: false,
+            examName: null,
             course: {
                 title: '',
                 lead: '',
@@ -23,7 +32,8 @@ class EditCourseForm extends Component {
                 requirements: [],
                 videos: [],
                 imageUrl: '',
-                owner: this.props.teacherInfo ? this.props.teacherInfo._id : ''
+                owner: this.props.teacherInfo ? this.props.teacherInfo._id : '',
+                quizId: null
             },
             uploadingActive: false
         }
@@ -76,6 +86,11 @@ class EditCourseForm extends Component {
             })
             .catch(err => this.props.handleToast(true, err.response.data.message, '#f8d7da'))
     }
+
+    openInNewTab = (url) => {
+        const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+        if (newWindow) newWindow.opener = null
+      }
 
 
     render() {
@@ -164,7 +179,32 @@ class EditCourseForm extends Component {
                                     <Form.Label>Image (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
+                                {this.state.course.quizId ? (<Button onClick={() => this.openInNewTab(`http://localhost:3001/editQuiz/${this.state.course.quizId}`)} className="add-exam">Modifier examen</Button>): (<Button className="mt-3 add-exam" onClick={() => this.setState({ modalIsOpen: true })}>Ajouter Examen</Button>)}
+                                <Modal onRequestClose={() => {
+                                    this.setState({
+                                        modalIsOpen: false,
+                                    })
+                                }} isOpen={this.state.modalIsOpen}>
+                                    <ModalHeader onHide={() => {
+                                        this.setState({
+                                            modalIsOpen: false,
+                                        })
+                                    }} closeButton>
 
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <Examform close={(id, name) => {
+                                            this.setState({
+                                                course: {
+                                                    ...this.state.course,
+                                                    quizId: id
+                                                },
+                                                examName: name,
+                                                modalIsOpen: false,
+                                            });
+                                        }} />
+                                    </ModalBody>
+                                </Modal>
                                 <Button className="mt-3 add-course" type="submit" disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'chargement image...' : 'Confirmer'}</Button>
                             </Form>
                             {this.state.uploadingActive || <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-outline-dark mt-5" disabled>Retour</Link>}

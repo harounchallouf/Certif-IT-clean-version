@@ -50,6 +50,10 @@ const courseSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'Teacher'
+    },
+    quizId: {
+        type: String,
+        default: null
     }
 }, { timestamps: true })
 
