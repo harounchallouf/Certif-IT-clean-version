@@ -1,23 +1,39 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
 
-const teacherSchema = new Schema({
-    name: {
+const adminSchema = mongoose.Schema({
+	userType: { type: String, default: "Admin" },
+	name: { type: String, required: true },
+	googleId: { type: Number },
+	email: {
+		type: String,
+		match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+	},
+	name: {
         type: String,
-        required: true,
-        unique: true,
-        default: 'unknown',
+        default: '',
         trim: true,
         set: text => text.charAt(0).toUpperCase() + text.substring(1)
     },
     surname: {
         type: String,
-        required: true,
-        unique: true,
-        default: 'unknown',
+        default: '',
         trim: true,
         set: text => text.charAt(0).toUpperCase() + text.substring(1)
     },
+	password: { type: String },
+
+	mobileNumber: {
+		type: Number,
+		match: /^([7-9][0-9]{9})$/g,
+	},
+	quizzes: [
+		{
+			quizId: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz" },
+		},
+	],
+	token: {
+		type: String,
+	},
     jobOccupation: {
         type: String,
         default: 'unknown'
@@ -34,11 +50,14 @@ const teacherSchema = new Schema({
     website: String,
     youtube: String,
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
-}, { timestamps: true })
+    },
+	passResetKey: { type: String },
+	passKeyExpires: { type: Number },
+	verificationKey: { type: String },
+	verificationKeyExpires: { type: Number },
+	isEmailVerified: { type: Boolean, default: true },
+});
 
-const Teacher = mongoose.model('Teacher', teacherSchema)
-
-module.exports = Teacher
+module.exports = mongoose.model("Teacher", adminSchema);

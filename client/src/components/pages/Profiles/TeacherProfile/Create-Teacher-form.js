@@ -24,6 +24,7 @@ class NewTeacherForm extends Component {
                 youtube: '',
                 website: '',
                 user: this.props.loggedUser ? this.props.loggedUser._id : '',
+                email: this.props.loggedUser ? this.props.loggedUser.email : ''
             },
             uploadingActive: false
         }
@@ -43,7 +44,7 @@ class NewTeacherForm extends Component {
                 this.props.history.push('/profile')
                 this.props.handleToast(true, 'Félicitations !, vous avez maintenant un profil d\'instructeur', '#d4edda')
             })
-            .catch(err => this.props.handleToast(true, err.response.data.message[0].msg, '#f8d7da'))
+            .catch(err => this.props.handleToast(true, err.response?.data?.message[0].msg, '#f8d7da'))
     }
 
     handleImageUpload = e => {

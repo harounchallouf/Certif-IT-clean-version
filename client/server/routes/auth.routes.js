@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const passport = require("passport")
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs")
 const bcryptSalt = 10
 const User = require("../models/user.model")
@@ -41,7 +42,7 @@ router.post('/signup',
         User
             .create({ name, surname, username, password: hashPass, email, role })
             .then(newUser => req.login(newUser, err => err ? res.status(500).json({ message: 'Login error' }) : res.status(200).json(newUser)))
-            .catch(() => res.status(500).json({ message: 'Error saving user to DB. Please try again.' }))
+            .catch((err) => console.log(err) && res.status(500).json({ message: 'Error saving user to DB. Please try again.' }))
     })
 
 router.post('/login', (req, res, next) => {
@@ -56,8 +57,23 @@ router.post('/login', (req, res, next) => {
             res.status(401).json(failureDetails);
             return;
         }
+        console.log(theUser);
+        const token = jwt.sign(
+            {
+                userType: theUser.userType,
+                userId: theUser._id,
+                email: theUser.email,
+                name:theUser.name,
+                mobileNumber: theUser.mobileNumber,
+            },
+            'eLearning',
+            {
+                expiresIn: "1d",
+            }
+        );
+        console.log(theUser);
 
-        req.login(theUser, err => err ? res.status(500).json({ message: 'Session error' }) : res.status(200).json(theUser))
+        req.login(theUser, err => err ? res.status(500).json({ message: 'Session error' }) : res.status(200).json({token: token, ...theUser._doc}))
 
     })(req, res, next)
 })

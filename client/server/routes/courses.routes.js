@@ -65,7 +65,7 @@ router.post('/newCourse', isLoggedIn, isTeacher,
         return
     }
         
-    const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, duration, requirements, videos, owner } = req.body
+    const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, duration, requirements, videos, owner, quizId } = req.body
     
     const mainTopicsArr = whatYouWillLearn.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1))
     const requirementsArr = requirements.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1))
@@ -84,14 +84,15 @@ router.post('/newCourse', isLoggedIn, isTeacher,
             requirements: requirementsArr,
             videos: videosArr,
             duration,
-            owner
+            owner,
+            quizId
         })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
 })
 
 router.put('/editCourse/:id', isLoggedIn, isTeacher, isValidId, (req, res) => {
-    const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, videos, requirements, duration, owner } = req.body
+    const { imageUrl, title, lead, category, difficultyLevel, description, whatYouWillLearn, price, videos, requirements, duration, owner, quizId } = req.body
 
     const mainTopicsArr = typeof whatYouWillLearn === 'string' ? whatYouWillLearn.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1)) : whatYouWillLearn
     const requirementsArr = typeof requirements === 'string' ? requirements.split(',').map(elm => elm.charAt(0).toUpperCase() + elm.substring(1)) : requirements
@@ -110,7 +111,8 @@ router.put('/editCourse/:id', isLoggedIn, isTeacher, isValidId, (req, res) => {
             requirements: requirementsArr,
             videos: videosArr,
             duration,
-            owner
+            owner,
+            quizId
         })
         .then(response => res.json(response))
         .catch(err => res.status(500).json(err))
