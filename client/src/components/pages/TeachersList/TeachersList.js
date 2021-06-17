@@ -51,8 +51,8 @@ class TeachersList extends Component {
                 <section className="container-fluid teacher-hero">
                     <div className="heading">
                         <Container>
-                            <h1 className="mt-5">Our teachers</h1>
-                            <p>Help people learn new skills, advance their careers, <br></br> and explore their hobbies by sharing your knowledge.</p>
+                            <h1 className="mt-5">Nos instructeurs</h1>
+                            <p>Aider les gens à acquérir de nouvelles compétences, à faire progresser leur carrière,<br/> et explorez leurs passe-temps en partageant vos connaissances.</p>
                             <SearchBar filterBySearch={this.filterBySearch} sortBy={this.sortBy} />
                         </Container>
                     </div>

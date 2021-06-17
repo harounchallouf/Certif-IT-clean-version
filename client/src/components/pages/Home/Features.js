@@ -7,18 +7,18 @@ const Features = () => {
       <Container>
         <Row className="d-flex align-items-center" >
           <Col lg={6} md={12} style={{ textAlign: 'left' }}>
-            <h2 className="mb-3">Don't waste your valuable time</h2>
-            <p>Only Freedemy has all the critical factors to deliver real results.</p>
-            <p>Our curated collection of top-rated business and technical courses gives companies, governments,
-            and nonprofits the power to develop in-house expertise and satisfy employees’ hunger for learning
-            and development.</p>
-            <p className="mb-5">Empower your remote workforce to learn what they need, when they need it. Online learning from global experts across tech, business, wellness and more to help your employees do whatever comes next.</p>
+            <h2 className="mb-3">Ne perdez pas votre temps précieux</h2>
+            <p>Seul Certif IT possède tous les facteurs critiques pour fournir de vrais résultats.</p>
+            <p>Notre collection organisée de certificats de premier ordre offre aux entreprises, aux gouvernements,
+            et les organisations à but non lucratif le pouvoir de développer une expertise interne et de satisfaire la soif d'apprentissage des employés
+            et développement.</p>
+            {/* <p className="mb-5">Empower your remote workforce to learn what they need, when they need it. Online learning from global experts across tech, business, wellness and more to help your employees do whatever comes next.</p> */}
           </Col>
           <Col lg={3} md={6}>
-            <FeaturesCard
+            <FeaturesCard 
               imgSrc='//www.udacity.com/www-proxy/contentful/assets/2y9b3o528xhq/6pk4riNMII7w6COla8glF4/8c8655c3e7f185537eec5ee9ed118e83/EmployeableSkills__1_.svg'
-              alt='Employeable skills icon'
-              title='Get real employable skills'
+              alt='Compétences employables'
+              title='Obtenez de vraies compétences employables'
               text='Our curriculum is designed with top-tier industry partners, so you learn the high-impact skills that top companies want.'
             />
 

@@ -50,7 +50,7 @@ class Signup extends Component {
                   <figure className='form-logo'><img src={logo} alt='Freedemy logo' /></figure>
                 </Row>
 
-                <h1 className='text-center'>Sign Up</h1>
+                <h1 className='text-center'>Inscription</h1>
 
                 <hr />
 
@@ -58,21 +58,21 @@ class Signup extends Component {
 
 
                   <Form.Group controlId='username'>
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>Pseudo</Form.Label>
                     <Form.Control
                       required
                       type='text'
                       name='username'
-                      placeholder='Choose a username'
+                      placeholder='Choisissez un pseudo'
                       value={this.state.username}
                       onChange={this.handleInputChange} />
                     <Form.Text id='passwordHelpBlock' muted>
-                      Your unsername must have more than 5 characters
+                    Votre pseudo doit avoir plus de 5 caractères
                       </Form.Text>
                   </Form.Group>
 
                   <Form.Group controlId='password'>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Mot de passe</Form.Label>
                     <Form.Control
                       required
                       type='password'
@@ -81,32 +81,32 @@ class Signup extends Component {
                       value={this.state.password}
                       onChange={this.handleInputChange} />
                     <Form.Text id='passwordHelpBlock' muted>
-                      Your password must have more than 4 characters and contain a number
+                    Votre mot de passe doit comporter plus de 4 caractères et contenir un chiffre
                       </Form.Text>
                   </Form.Group>
 
                   <Form.Group controlId='email'>
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>Adresse Email</Form.Label>
                     <Form.Control
                       required
                       type='email'
                       name='email'
-                      placeholder='sample@email.net'
+                      placeholder='exemple@email.com'
                       value={this.state.email}
                       onChange={this.handleInputChange} />
                   </Form.Group>
 
                   <Form.Group controlId='role'>
-                    <Form.Label>Choose role</Form.Label>
+                    <Form.Label>Choisissez un rôle</Form.Label>
                     <Form.Control as='select' name='role' value={this.state.role} onChange={this.handleInputChange}>
-                      <option>Which's your role?</option>
-                      <option value='Student' >Student</option>
-                      <option value='Teacher' >Teacher</option>
+                      <option>Quel est votre rôle ?</option>
+                      <option value='Student' >Apprenant</option>
+                      <option value='Teacher' >instructeur</option>
                     </Form.Control>
                   </Form.Group>
 
                   <Form.Group className="mt-5 mb-3" style={{ width: '60%', margin: 'auto' }}>
-                    <Button className='btn-block' variant='primary' type='submit'>Let's start !</Button>
+                    <Button className='btn-block' variant='primary' type='submit'>c'est parti !</Button>
                   </Form.Group>
                 </Form>
               </Col>

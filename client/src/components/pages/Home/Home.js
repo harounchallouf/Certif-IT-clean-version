@@ -1,18 +1,19 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import CoursesService from '../../../service/courses.service'
-import { Container, Row, Carousel, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image } from 'react-bootstrap'
+import Carousel from 'react-bootstrap/Carousel'
 import './Home.css'
 // import CourseCard from './../../shared/CourseCard/Course-card'
 import RandomCard from './Random-card'
 import Loader from '../../shared/Spinner/Loader'
 
-import Hero from './Hero'
+
 import Features from './Features'
 import Banner from './Banner'
 
 import HeroSection from './HeroSection'
-
+import about from '../../../assets/about.jpg'
 
 
 const Home = props => {
@@ -29,15 +30,13 @@ const Home = props => {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-
-      {/* <Hero title='Aspire for more' p1='Learning keeps you in the lead.' p2='Get in-demand skills to impress anyone.' /> */}
 <HeroSection/>
       <section className="container-fluid about" >
         <Container>
           <Row className="d-flex align-items-center">
 
             <Col md={6}>
-              <Image style={{ width: '100%' }} src="https://res.cloudinary.com/dodneiokm/image/upload/v1608222311/project3-ironhack/freedemt_x0s3mo.png" />
+              <Image style={{ width: '100%' }} src={about} />
             </Col>
             <Col md={6}>
 
@@ -56,7 +55,7 @@ const Home = props => {
       {/* Carousel */}
       <Container>
         <section className="carousel-section mt-5">
-          <h2 className="mt-5 mb-5 text-center ">Explore our schools to find your perfect program</h2>
+          <h2 className="mt-5 mb-5 text-center ">Découvrez une variété de certifications dans le secteur IT</h2>
 
           {courses ?
             <Carousel className='carousel'>
@@ -83,7 +82,7 @@ const Home = props => {
 
         </section>
       </Container>
-      <Banner title='Make the most of your online learning experience' text='Our teachers will help you learn while staying home.' />
+      <Banner title='Tirez le meilleur parti de votre expérience de certification en ligne' text='Nos instructeurs vous aideront à se certifier tout en restant à la maison.' />
 
       {/* Features */}
       <Features />

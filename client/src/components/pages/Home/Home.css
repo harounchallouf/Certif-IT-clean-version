@@ -66,6 +66,7 @@ h3{
 
 .carousel-control-next-icon {
     display:none;
+    color: rgb(173, 32, 32);
 }
 
 .carousel-control-prev-icon{
@@ -81,12 +82,16 @@ h3{
     box-shadow: 0 4px 12px rgba(0,0,0,.08);
     height: auto;
     text-align:center;
+    border-top: var(--accent-width,5px) solid var(--accent-color, #fff);
 }
 
 .banner{
-    background-color: rgb(90, 124, 153);
+    background: url(../../../assets/ProfImg.jpg);
+    background-size: cover;
+    /* background-color: rgb(90, 124, 153); */
     color:#fff;
     padding:100px;
+    height: 450px;
 }
 .banner p {
     font-size:1.2em;

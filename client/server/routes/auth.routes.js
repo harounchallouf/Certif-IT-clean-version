@@ -9,9 +9,9 @@ const { check, validationResult } = require('express-validator')
 
 router.post('/signup',
     [
-        check('username').isLength({ min: 5 }).withMessage('Name should have min 5 characters.').custom(value => {
+        check('username').isLength({ min: 5 }).withMessage('Le pseudo doit avoir au moins 5 caractères.').custom(value => {
             return User.findOne({ username: value }).then(user => {
-                if (user) { return Promise.reject('The username already exists') }
+                if (user) { return Promise.reject('Ce pseudo existe déjà') }
             })
         }),
 

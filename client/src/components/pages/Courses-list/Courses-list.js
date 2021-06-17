@@ -64,8 +64,8 @@ class CoursesList extends Component {
 
                     <Container>
                         <div className="heading">
-                            <h1 className="mt-5">Our courses</h1>
-                            <p>Help individuals reach their goals and pursue their dreams.</p>
+                            <h1 className="mt-5">Nos Certificats</h1>
+                            <p>Découvrez la gamme des certificats électroniques selon vos besoins.</p>
                             <SearchBar filterBySearch={this.filterBySearch} filterByCategory={this.filterByCategory} filterByLevel={this.filterByLevel} sortBy={this.sortBy} />
                         </div>
                     </Container>

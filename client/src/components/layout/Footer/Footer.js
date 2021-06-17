@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <footer className="footer mt-5">
       <p className="text-center">
-        Developed by <strong><a href="https://github.com/Joseacasado" target="_blank" rel="noreferrer"> Jose A. Casado </a></strong>
-        and <strong><a href="https://github.com/marisa2306" target="_blank" rel="noreferrer">Marisa Vitale </a></strong>
-        within <strong> Ironack </strong><em> Web Development Bootcamp</em>
+        Developé par <strong><a href="https://github.com/Joseacasado" target="_blank" rel="noreferrer"> Ghada Nefzaoui </a></strong>
+        et <strong><a href="https://github.com/marisa2306" target="_blank" rel="noreferrer">Haroun Challouf  </a></strong> <br />© 2021 <strong>Certif IT</strong> | Tous les droits
+        sont réservés.
       </p>
     </footer>
   )

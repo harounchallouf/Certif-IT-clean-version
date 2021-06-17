@@ -1,4 +1,74 @@
-.hero-container img {
+.welcome-screen {
+	align-self: center !important;
+	min-width: 100% !important
+}
+.heading-section .hero-btn{
+  position: absolute;
+  z-index: 2;
+  top: 460px;
+  left: 8.7%;
+  background-color: #250c91 !important;
+  color: white;
+}
+.welcome-page {
+	height: calc(90vh - 64px) !important; 
+	display: flex !important; 
+	justify-content: center !important;
+}
+
+.heading-section {
+	display: flex;
+	justify-content: center;
+	width: 90% !important;
+}
+
+.quiz-image {
+	/* max-width: 500px; */
+	/* max-height: 220px; */
+  margin-left: 30%;
+	margin-bottom: 2% !important;
+}
+
+.pin-section {
+	display: flex;
+	justify-content: flex-end !important;
+}
+
+.pin-image {
+	width: 400px;
+	margin-right: 10%;
+}
+
+@media screen and (max-width:1300px) {
+	.quiz-image {
+	width: 500px;
+ height: 200px;
+    margin-left: 40%;
+	}
+  .heading-section .hero-btn{
+    left: 14%;
+    top: 370px;
+  }
+}
+
+@media screen and (max-width:520px) {
+	.quiz-image {
+	width: 500px;
+ height: 200px;
+    margin-left: 30%;
+	}
+  .heading-section .hero-btn{
+    left: 20%;
+    top: 370px;
+  }
+}
+
+@media screen and (max-width:360px) {
+	.quiz-image {
+		max-width: 85%;
+	}
+}
+/* .hero-container img {
     object-fit: cover;
     width: 100%;
     height: 120%;
@@ -18,11 +88,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 200px;
     object-fit: contain;
     justify-content: center;
     box-sizing: border-box;
-    margin-top: 10%;
   }
   
   .hero-container > h1 {
@@ -56,6 +124,14 @@
   }
   
   @media screen and (max-width: 768px) {
+    .hero-container {
+      width: 100%;
+      height: 100%;
+    }
+    .hero-container > img {
+      width: 100%;
+      height: 100%;
+    }
     .hero-container > h1 {
       font-size: 50px;
     }
@@ -63,9 +139,7 @@
       font-size: 30px;
       text-align: center;
     }
-    .hero-container {
-        margin-top: 10%;
-    }
+
   
     .btn-mobile {
       display: block;
@@ -76,4 +150,4 @@
       width: 100%;
     }
   }
-  
+   */

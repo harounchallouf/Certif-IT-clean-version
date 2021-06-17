@@ -6,10 +6,10 @@ const Banner = ({ title, text }) => {
     <section className="banner text-center mt-5 container-fluid">
       <Container>
         <Row>
-          <Col>
+          <Col style={{marginTop: '5%'}}>
             <h2>{title}</h2>
             <p>{text}</p>
-            <Link className="btn btn-dark btn-lg mt-3" to="/courses">Explore Resources</Link>
+            <Link className="btn btn-dark btn-lg mt-3" to="/courses">Découvrez nos certificats</Link>
           </Col>
         </Row>
       </Container>

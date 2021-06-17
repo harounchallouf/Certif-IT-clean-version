@@ -18,7 +18,7 @@ import NewCourseForm from './pages/Course-form/New-Course-form'
 import EditCourseForm from './pages/Course-form/Edit-Course-form'
 
 
-import Signup from './pages/Signup/Signup'
+// import Signup from './pages/Signup/Signup'
 import UserProfile from './pages/Profiles/UserProfile/UserProfile'
 import EditUserForm from './pages/Profiles/UserProfile/EditUserForm'
 
@@ -28,7 +28,10 @@ import NewTeacherForm from './pages/Profiles/TeacherProfile/Create-Teacher-form'
 import EditTeacherForm from './pages/Profiles/TeacherProfile/Edit-Teacher-Form'
 
 import Alert from './shared/Alert/Alert'
-
+import Connexion from './pages/Connexion/Connexion'
+import Login from './pages/Connexion/login'
+import Signup from './pages/Connexion/signup'
+import Certifpage from './pages/Certification/Certifpage'
 class App extends Component {
 
   constructor() {
@@ -96,12 +99,16 @@ class App extends Component {
         <main>
           <AnimatePresence>
             <Switch>
+ <Route  exact path="/certification" component={Certifpage} /> //TODO here
+                <Route exact path="/connexion" component={Connexion} />
+                <Route exact path="/login" render={props => this.state.loggedInUser ? <Redirect to='/courses'/> : <Login {...props} handleToast={this.handleToast} storeUser={this.setTheUser}/>} />
+                <Route exact path="/signup" render={props => this.state.loggedInUser ? <Redirect to='/courses'/> : <Signup {...props} handleToast={this.handleToast} storeUser={this.setTheUser}/>} />
               <Route exact path="/" render={props => <Home {...props} handleToast={this.handleToast} />} />
               <Route exact path="/courses" render={props => <CoursesList {...props} loggedUser={this.state.loggedInUser} teacherInfo={this.state.teacher} updateFavCourses={this.updateFavCourses} handleToast={this.handleToast} />} />
               <Route path="/courses/:course_id" render={props => <CourseDetails {...props} handleToast={this.handleToast} teacherInfo={this.state.teacher} loggedUser={this.state.loggedInUser} />} />
               <Route exact path="/teachers" render={props => <TeachersList {...props} loggedUser={this.state.loggedInUser} teacherInfo={this.state.teacher} updateFavTeachers={this.updateFavTeachers} handleToast={this.handleToast} />} />
               <Route path="/teachers/:teacher_id" render={props => <TeacherProfile {...props} loggedUser={this.state.loggedInUser} teacherInfo={this.state.teacher} storeUser={this.setTheUser} updateFavCourses={this.updateFavCourses} handleToast={this.handleToast} />} />
-              <Route path="/signup" render={props => this.state.loggedInUser ? <Redirect to='/courses' /> : <Signup {...props} handleToast={this.handleToast} storeUser={this.setTheUser} />} />
+              {/* <Route path="/signup" render={props => this.state.loggedInUser ? <Redirect to='/courses' /> : <Signup {...props} handleToast={this.handleToast} storeUser={this.setTheUser} />} /> */}
               <Route exact path="/profile" render={props => this.state.loggedInUser ? <UserProfile {...props} loggedUser={this.state.loggedInUser} teacherInfo={this.state.teacher} storeUser={this.setTheUser} updateFavCourses={this.updateFavCourses} updateFavTeachers={this.updateFavTeachers} handleToast={this.handleToast} /> : <Redirect to='/signup' />} />
               <Route path="/profile/edit-user" render={props => this.state.loggedInUser ? <EditUserForm {...props} loggedUser={this.state.loggedInUser} storeUser={this.setTheUser} handleToast={this.handleToast} /> : <Redirect to='/signup' />} />
               <Route path="/profile/create-teacher" render={props => this.state.loggedInUser ? <NewTeacherForm {...props} loggedUser={this.state.loggedInUser} teacherInfo={this.state.teacher} storeUser={this.setTheUser} handleToast={this.handleToast} /> : <Redirect to='/signup' />} />
