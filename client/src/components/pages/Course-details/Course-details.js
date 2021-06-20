@@ -35,7 +35,7 @@ class CourseDetails extends Component {
             .then(res => this.setState({ course: res[0].data, videoUrl: res[0].data.videos[0], comments: res[1].data }))
             .catch(() => {
                 this.props.history.push('/courses')
-                this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+                this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
             })
     }
 
@@ -44,11 +44,11 @@ class CourseDetails extends Component {
             .deleteComment(commentId)
             .then(() => {
                 this.refreshCourse()
-                this.props.handleToast(true, 'Delete successful!', '#d4edda')
+                this.props.handleToast(true, 'Suppression réussie!', '#d4edda')
             })
             .catch(() => {
                 this.props.history.push('/courses')
-                this.props.handleToast(true, 'An error has occurred while deleting, please try again later', '#f8d7da')
+                this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
             })
     }
 
@@ -58,7 +58,7 @@ class CourseDetails extends Component {
 
     render() {
         return (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{marginTop: '8%'}}>
 
                 <Container className="course-details ">
                     {this.state.course
@@ -67,7 +67,7 @@ class CourseDetails extends Component {
                             <section className="header">
                                 <Row>
                                     <Col md={{ span: 8 }} >
-                                        <h1>{this.state.course.title}</h1>
+                                        <h2>{this.state.course.title}</h2>
                                         <p><em> {this.state.course.lead}</em></p>
 
                                         {this.state.course.owner && <p style={{ color: '#73726c', fontWeight: 700 }}>Crée par <Link to={`/teachers/${this.state.course.owner._id}`}>{this.state.course.owner.name} {this.state.course.owner.surname}</Link></p>}
@@ -95,11 +95,14 @@ class CourseDetails extends Component {
                                         </ul>
 
                                         {this.props.loggedUser ?
-                                            <Button onClick={this.toggleInput} className="mt-3 mb-3 start-course" >{this.state.showInput ? 'Fermer les supports de cour' : 'Voir les supports de cour'}</Button>
-                                            :
-                                            <Button onClick={this.toggleInput} disabled className="mt-3 mb-3 start-course" >Connectez-vous pour voir les supports de cour</Button>
+                                            <div>
+                                            <Button onClick={this.toggleInput} className="mt-3 mb-3 start-course" >{this.state.showInput ? 'Fermer les supports de cours' : 'Voir les supports de cours'}</Button>
+                                            <Button className="start-exam mt-3 mb-3 float-right" onClick>Passer l'examen</Button>
+                                            </div>
+                                                :
+                                            <Button onClick={this.toggleInput} disabled className="mt-3 mb-3 start-course" >Connectez-vous pour voir les supports de cours</Button>
                                         }
-                                        <Button className="start-exam mt-3 mb-3 float-right" onClick>Passer l'examen</Button>
+                                        
 
                                         {/* Videos */}
                                         {this.state.showInput &&
@@ -153,7 +156,7 @@ class CourseDetails extends Component {
                                                 </div>
                                                 {this.props.loggedUser && this.props.loggedUser._id === elm.user._id ?
 
-                                                    <Button onClick={() => this.deleteComment(elm._id)} variant="outline-danger" size="sm">Effacer Commentaire</Button>
+                                                    <Button onClick={() => this.deleteComment(elm._id)} variant="outline-danger" size="sm">Supprimer Commentaire</Button>
 
                                                     : null
                                                 }

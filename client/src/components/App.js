@@ -32,6 +32,7 @@ import Connexion from './pages/Connexion/Connexion'
 import Login from './pages/Connexion/login'
 import Signup from './pages/Connexion/signup'
 import Certifpage from './pages/Certification/Certifpage'
+import Contact from './pages/Contact/Contact'
 class App extends Component {
 
   constructor() {
@@ -76,7 +77,7 @@ class App extends Component {
       this.usersServices
         .updateFavCourses(this.state.loggedInUser._id, newList)
         .then(() => this.refreshUser())
-        .catch(() => this.handleToast(true, 'An error has occurred, please try again later', '#f8d7da'))
+        .catch(() => this.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da'))
     }
   }
 
@@ -86,7 +87,7 @@ class App extends Component {
       this.usersServices
         .updateFavTeachers(this.state.loggedInUser._id, newList)
         .then(() => this.refreshUser())
-        .catch(() => this.handleToast(true, 'An error has occurred, please try again later', '#f8d7da'))
+        .catch(() => this.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da'))
     }
   }
 
@@ -99,6 +100,7 @@ class App extends Component {
         <main>
           <AnimatePresence>
             <Switch>
+            <Route  exact path="/contact" component={Contact} /> 
  <Route  exact path="/certification" component={Certifpage} /> //TODO here
                 <Route exact path="/connexion" component={Connexion} />
                 <Route exact path="/login" render={props => this.state.loggedInUser ? <Redirect to='/courses'/> : <Login {...props} handleToast={this.handleToast} storeUser={this.setTheUser}/>} />

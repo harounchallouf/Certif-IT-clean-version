@@ -1,24 +1,25 @@
 .courses-hero{
-    background-image: url("https://res.cloudinary.com/dodneiokm/image/upload/v1608205837/project3-ironhack/portrait-young-pretty-woman-sitting-table-black-shirt-working-laptop-co-working-office_aufbet.jpg");
+    background-image: url("../../../assets/photo-1516397281156-ca07cf9746fc.jfif");
     padding:10px 0;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    color: white;
 }
 
 .courses-hero h1{
-    font-weight: 700;
     line-height: 1.2;
     letter-spacing: -.02rem;
     font-size: 4rem;
-    text-shadow: 2px 1px 1px #fff;
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .courses-hero p{
     letter-spacing: -.02rem;
-    line-height: 1.3em;
+    line-height: 1.6em;
     font-size: 1.4rem;
-    text-shadow: 2px 1px 1px #fff;
 }
 
 .courses-hero .heading{

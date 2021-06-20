@@ -2,25 +2,26 @@
     background-image:url("../../../assets/inst3.jpg");
     padding:10px 0;
     background-size: cover;
-    background-position: top;
+    background-position: bottom;
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: white;
 }
 
 .teacher-hero h1{
-    font-weight: 700;
     line-height: 1.2;
     letter-spacing: -.02rem;
     font-size: 4rem;
-    text-shadow: 2px 1px 1px rgb(82, 82, 82);
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .teacher-hero p{
     letter-spacing: -.02rem;
-    line-height: 1.3em;
+    line-height: 1.6em;
     font-size: 1.4rem;
-    text-shadow: 2px 1px 1px rgb(124, 124, 124);
+  
 }
 
 .teacher-hero .heading{

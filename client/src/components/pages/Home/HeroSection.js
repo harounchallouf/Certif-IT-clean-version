@@ -2,12 +2,8 @@ import React from "react";
 import "./HeroSection.css";
 import Image from "../../../assets/quiz.png";
 import Image1 from "../../../assets/head.png"
-// import { Button } from "./Button";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Link as Scroll } from "react-scroll";
-import { IconButton, Collapse } from "@material-ui/core";
 import {Container, Grid, Hidden, Button} from '@material-ui/core';
-
+import { Link } from "react-router-dom";
 function HeroSection() {
   return (
     <div>
@@ -16,7 +12,9 @@ function HeroSection() {
           <Grid container spacing={0}>
             <Grid item xs={12} md={6} className="heading-section">
               <img src={Image1} className="quiz-image" alt="welcome" />
-              <Button className="hero-btn" size="large">Inscrivez-vous maintenant</Button>
+              <Link to="/signup">
+                <Button className="hero-btn" size="large">Inscrivez-vous maintenant</Button>
+                </Link>
             </Grid>
             <Hidden smDown>
               <Grid item xs={12} md={6} className="pin-section">

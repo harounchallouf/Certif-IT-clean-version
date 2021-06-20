@@ -46,7 +46,7 @@ class UserProfile extends Component {
       .then(response => this.setState({ randomCourses: response.data }))
       .catch(() => {
         this.props.history.push('/')
-        this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+        this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
       })
 
     if (this.props.teacherInfo) {
@@ -55,7 +55,7 @@ class UserProfile extends Component {
         .then(response => this.setState({ teacherCourses: response.data }))
         .catch(() => {
           this.props.history.push('/')
-          this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+          this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
         })
     }
   }
@@ -67,7 +67,7 @@ class UserProfile extends Component {
         .then(response => this.setState({ favCourses: response.data }))
         .catch(() => {
           this.props.history.push('/')
-          this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+          this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
         })
     }
   }
@@ -79,7 +79,7 @@ class UserProfile extends Component {
         .then(response => this.setState({ favTeachers: response.data }))
         .catch(() => {
           this.props.history.push('/')
-          this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+          this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
         })
     }
   }
@@ -100,7 +100,7 @@ class UserProfile extends Component {
       })
       .catch(() => {
         this.props.history.push('/')
-        this.props.handleToast(true, 'An error has occurred while deleting, please try again later', '#f8d7da')
+        this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
       })
   }
 
@@ -108,56 +108,57 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{marginTop: '8%'}}>
 
         <Popup show={this.state.showModal} handleModal={this.handleModal} color={'#f8d7da'}>
           <DeleteMessage />
           <Row className='justify-content-center'>
             <Col xs='auto'>
-              <Button variant='secondary' onClick={() => this.handleModal(false)}>Close</Button>
+              <Button variant='secondary' onClick={() => this.handleModal(false)}>Fermer</Button>
             </Col>
             <Col xs='auto'>
-              <Button to={`/profile/delete-user/${this.props.loggedUser._id}`} onClick={this.deleteUser} variant='danger'>Delete account</Button>
+              <Button to={`/profile/delete-user/${this.props.loggedUser._id}`} onClick={this.deleteUser} variant='danger'>Supprimer</Button>
             </Col>
           </Row>
         </Popup>
 
         <Container className="user-profile">
-          <h1 className="mt-5 mb-3">Welcome back {this.props.loggedUser.username} !</h1>
+          <h1 className="mt-5 mb-3">Bon retour {this.props.loggedUser.username} !</h1>
 
           {/* User details */}
           <section className="user-details">
             <article>
               <Image src={this.props.loggedUser.imageUrl} className="user-img" roundedCircle alt={this.props.loggedUser.username} />
               <div className="user-fields">
-                <p><strong>Username:</strong> {this.props.loggedUser.username}</p>
+                <p><strong>Pseudo:</strong> {this.props.loggedUser.username}</p>
                 <p><strong>Email:</strong> {this.props.loggedUser.email}</p>
                 <p><strong>Role:</strong> {this.props.loggedUser.role}</p>
               </div>
             </article>
 
             <div className="user-buttons">
-              <Link to='/profile/edit-user' className="btn btn-info">Edit details</Link>
-              <Button onClick={() => this.handleModal(true)} className="btn btn-danger">Delete user</Button>
-
+              <Link to='/profile/edit-user' className="btn btn-info">Modifier mon profile</Link>
               {this.props.loggedUser.role === 'Teacher' && this.props.teacherInfo
                 ?
                 <Link to={`/teachers/${this.props.teacherInfo._id}`} className="btn btn-warning">Teacher profile</Link>
                 : this.props.loggedUser.role === 'Teacher' && !this.props.teacherInfo ?
-                  <Link to='/profile/create-teacher' className="btn btn-success">Create teacher profile</Link>
+                  <Link to='/profile/create-teacher' className="btn btn-success">Créer mon profil</Link>
                   : null
               }
+              <Button onClick={() => this.handleModal(true)} className="btn btn-danger">Supprimer mon compte</Button>
+
+             
             </div>
           </section>
 
 
           {/* Your activity*/}
-          <h2 className="mt-5 mb-3">Your activity</h2>
-          <Row className="mt-5">
+          <h2 className="mt-5 mb-3">Mon activité</h2>
+          <Row className="mt-5"  style={{boxShadow: '10px 5px 5px #b8ceec'}}>
             <Col>
-              <TabNav tabs={['Favorite Courses', 'Favorite Teachers', 'Suggested Courses']} selected={this.state.selected} setSelected={this.setSelected}   >
+              <TabNav tabs={['Certificats préférés', 'Instructeurs préférés', 'Certificats suggérés']} selected={this.state.selected} setSelected={this.setSelected}   >
                 {this.state.favCourses.length > 0 &&
-                  <Tab isSelected={this.state.selected === 'Favorite Courses'} >
+                  <Tab isSelected={this.state.selected === 'Certificats préférés'} >
                     <section>
                       <Row>
                         {
@@ -170,7 +171,7 @@ class UserProfile extends Component {
 
                 }
                 {this.state.favTeachers.length > 0 &&
-                  <Tab isSelected={this.state.selected === 'Favorite Teachers'} >
+                  <Tab isSelected={this.state.selected === 'Instructeurs préférés'} >
                     <Row style={{ width: '100 %' }}>
                       {
                         this.state.favTeachers.map(elm =>
@@ -181,7 +182,7 @@ class UserProfile extends Component {
 
                 }
                 {this.state.randomCourses.length > 0 &&
-                  <Tab isSelected={this.state.selected === 'Suggested Courses'} >
+                  <Tab isSelected={this.state.selected === 'Certificats suggérés'} >
                     <Row>
                       {
                         this.state.randomCourses.map(elm =>
@@ -195,7 +196,7 @@ class UserProfile extends Component {
             </Col>
           </Row>
 
-          <Link to="/courses" className="btn btn-outline-dark mt-5">Go back</Link>
+          <Link to="/courses" className="btn btn-outline-dark mt-5">Retour</Link>
         </Container>
       </motion.div >
     )

@@ -3,11 +3,15 @@
 }
 
 .course-details .header{
-    background-color:#224cd8a9;
+    background: linear-gradient(to right, #3a7bd5,  #91b5c7);
     padding:40px;
     border: 1px solid #dee2e6 ;
     border-radius: .25rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.39)
+}
+.header h2{
+    color: white !important;
+    font-weight: 300 !important;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {

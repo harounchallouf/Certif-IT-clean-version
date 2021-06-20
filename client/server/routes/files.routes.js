@@ -6,7 +6,7 @@ const { isLoggedIn } = require('../middleware/custom-middleware')
 
 router.post('/upload', isLoggedIn, uploader.single('imageUrl'), (req, res, next) => {
     if (!req.file) {
-      res.status(500).json({ message: 'Error loading the file' })
+      res.status(500).json({ message: 'Erreur de chargement du fichier' })
     }
     else{
      res.json({ imageUrl: req.file.path })}

@@ -39,7 +39,9 @@
     letter-spacing: -.02rem;
     font-size: 1.75rem;
 }
-
+.teacher-profile h3{
+    color: #3a78cb;
+}
 .cta{
     
     padding:20px 40px;

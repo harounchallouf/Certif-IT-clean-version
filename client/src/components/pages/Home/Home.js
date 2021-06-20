@@ -14,7 +14,7 @@ import Banner from './Banner'
 
 import HeroSection from './HeroSection'
 import about from '../../../assets/about.jpg'
-
+import Ft from './Ft'
 
 const Home = props => {
   const coursesService = new CoursesService()
@@ -24,14 +24,15 @@ const Home = props => {
       .then(response => setCourses(response.data))
       .catch(() => {
         props.history.push('/courses')
-        props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+        props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
       })
   })
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-<HeroSection/>
-      <section className="container-fluid about" >
+      <HeroSection />
+      <Ft/>
+      {/* <section className="container-fluid about" >
         <Container>
           <Row className="d-flex align-items-center">
 
@@ -48,7 +49,7 @@ const Home = props => {
           </Row>
 
         </Container>
-      </section>
+      </section> */}
 
 
 
@@ -82,7 +83,7 @@ const Home = props => {
 
         </section>
       </Container>
-      <Banner title='Tirez le meilleur parti de votre expérience de certification en ligne' text='Nos instructeurs vous aideront à se certifier tout en restant à la maison.' />
+      <Banner title='Proposez vos propres certificats sur Certif IT'  />
 
       {/* Features */}
       <Features />

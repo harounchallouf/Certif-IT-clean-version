@@ -7,3 +7,9 @@
 a{
     color:#495057
 }
+
+h1 {
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

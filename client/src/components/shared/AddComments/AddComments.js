@@ -31,7 +31,7 @@ class AddComments extends Component {
                 this.props.refreshCourse()
                 this.setState({ comment: { ...this.state.comment, content: '' } })
             })
-            .catch(err => this.props.handleToast(true, 'An error has occurred, please try again later', 'red'))
+            .catch(err => this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', 'red'))
 
     }
 
@@ -40,10 +40,10 @@ class AddComments extends Component {
         return (
             <Row>
                 <Col>
-                    <h2 className="mt-4 mb-3">Add a Comment</h2>
+                    <h2 className="mt-4 mb-3">Ajouter un Commentaire</h2>
                     <Form className="comment-form" onSubmit={this.handleSubmit}>
                         <Form.Group controlId="content">
-                            <Form.Control as='textarea' name="content" value={this.state.comment.content} onChange={this.handleInputChange} placeholder="Write your comment..." />
+                            <Form.Control as='textarea' name="content" value={this.state.comment.content} onChange={this.handleInputChange} placeholder="Ecrivez votre commentaire..." />
                         </Form.Group>
                         <Button className="cmnt-btn" type="submit"> Commenter</Button>
                     </Form>

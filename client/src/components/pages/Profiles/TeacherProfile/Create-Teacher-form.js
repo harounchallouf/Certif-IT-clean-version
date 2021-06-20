@@ -66,7 +66,7 @@ class NewTeacherForm extends Component {
 
     render() {
         return (
-            <motion.div initial='initial' animate='in' exit='out' variants={pageVariants} transition={pageTransition}>
+            <motion.div initial='initial' animate='in' exit='out' variants={pageVariants} transition={pageTransition} style={{marginTop: '3%'}}>
 
                 <Container>
                     <Row>
@@ -76,51 +76,51 @@ class NewTeacherForm extends Component {
 
                             <Form onSubmit={this.handleSubmit}>
                                 <Row>
-                                    <Col md={6}>
-                                        <Form.Group controlId="name">
+                                <Col md={6}>
+                                        <Form.Group controlId="surname">
                                             <Form.Label>Nom</Form.Label>
-                                            <Form.Control type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder='Enter your name' required />
+                                            <Form.Control type="text" name="surname" value={this.state.surname} onChange={this.handleInputChange} placeholder='Entrer votre nom' required />
                                         </Form.Group>
                                     </Col>
                                     <Col md={6}>
-                                        <Form.Group controlId="surname">
+                                        <Form.Group controlId="name">
                                             <Form.Label>Prénom</Form.Label>
-                                            <Form.Control type="text" name="surname" value={this.state.surname} onChange={this.handleInputChange} placeholder='Enter your last name' required />
+                                            <Form.Control type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder='Entrer votre prénom' required />
                                         </Form.Group>
                                     </Col>
                                 </Row>
                                 <Form.Group controlId="jobOccupation">
                                     <Form.Label>Occupation</Form.Label>
-                                    <Form.Control type="text" name="jobOccupation" value={this.state.jobOccupation} onChange={this.handleInputChange} placeholder='What is your profession' />
+                                    <Form.Control type="text" name="jobOccupation" value={this.state.jobOccupation} onChange={this.handleInputChange} placeholder='Quelle est votre profession ?' />
                                 </Form.Group>
                                 <Form.Group controlId="description">
                                     <Form.Label>A propos de moi</Form.Label>
-                                    <Form.Control as="textarea" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder='Tell us something about you' />
+                                    <Form.Control as="textarea" name="description" value={this.state.description} onChange={this.handleInputChange} placeholder='Dites-nous quelque chose sur vous' />
                                 </Form.Group>
 
                                 <Tabs className="mt-4" defaultActiveKey="linkedin" id="Personal Links">
                                     <Tab eventKey="linkedin" title="Linkedin">
                                         <Form.Group controlId="linkedin">
                                             <Form.Label>Compte Linkedin </Form.Label>
-                                            <Form.Control type="text" name="linkedin" value={this.state.linkedin} onChange={this.handleInputChange} placeholder='Do you have a linkedIn profile?' />
+                                            <Form.Control type="text" name="linkedin" value={this.state.linkedin} onChange={this.handleInputChange} placeholder='Avez-vous un profil linkedIn ?' />
                                         </Form.Group>
                                     </Tab>
                                     <Tab eventKey="website" title="Website">
                                         <Form.Group controlId="website">
                                             <Form.Label>Site web</Form.Label>
-                                            <Form.Control type="text" name="website" value={this.state.website} onChange={this.handleInputChange} placeholder='Do you have any website?' />
+                                            <Form.Control type="text" name="website" value={this.state.website} onChange={this.handleInputChange} placeholder='Avez-vous un site Web?' />
                                         </Form.Group>
                                     </Tab>
                                     <Tab eventKey="youtube" title="Youtube">
                                         <Form.Group controlId="youtube">
                                             <Form.Label>Chaîne YouTube</Form.Label>
-                                            <Form.Control type="text" name="youtube" value={this.state.youtube} onChange={this.handleInputChange} placeholder='Do you have a Youtube channel?' />
+                                            <Form.Control type="text" name="youtube" value={this.state.youtube} onChange={this.handleInputChange} placeholder='Avez-vous une chaîne Youtube ?' />
                                         </Form.Group>
                                     </Tab>
                                 </Tabs>
 
                                 <Form.Group className="mt-3">
-                                    <Form.Label>Imagen (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
+                                    <Form.Label>Imagen (fichier: jpg ou png) {this.state.uploadingActive && <Loader />}</Form.Label>
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
 

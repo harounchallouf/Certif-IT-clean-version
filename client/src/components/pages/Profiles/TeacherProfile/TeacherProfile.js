@@ -34,7 +34,7 @@ class TeacherProfile extends Component {
       .then(response => this.setState({ teacher: response[0].data, courses: response[1].data }))
       .catch(() => {
         this.props.history.push('/teachers')
-        this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+        this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
       })
   }
 
@@ -43,11 +43,11 @@ class TeacherProfile extends Component {
       .deleteCourse(course_Id)
       .then(() => {
         this.refreshTeacher()
-        this.props.handleToast(true, 'Delete successful!', '#d4edda')
+        this.props.handleToast(true, 'Suppression réussie !', '#d4edda')
       })
       .catch(() => {
         this.props.history.push('/profile')
-        this.props.handleToast(true, 'An error has occurred while deleting, please try again later', '#f8d7da')
+        this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
       })
   }
 
@@ -59,11 +59,11 @@ class TeacherProfile extends Component {
       .then(() => {
         this.props.storeUser(this.props.loggedUser)
         this.props.history.push('/profile')
-        this.props.handleToast(true, 'Delete successful!', '#d4edda')
+        this.props.handleToast(true, 'Suppression réussie !', '#d4edda')
       })
       .catch(() => {
         this.props.history.push('/profile')
-        this.props.handleToast(true, 'An error has occurred while deleting, please try again later', '#f8d7da')
+        this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
       })
   }
 
@@ -71,16 +71,16 @@ class TeacherProfile extends Component {
 
   render() {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} style={{marginTop: '10%'}}>
 
         <Popup show={this.state.showModal} handleModal={this.handleModal} color={'#f8d7da'}>
           <DeleteMessage />
           <Row className='justify-content-center'>
             <Col xs='auto'>
-              <Button variant='secondary' onClick={() => this.handleModal(false)}>Close</Button>
+              <Button variant='secondary' onClick={() => this.handleModal(false)}>Fermer</Button>
             </Col>
             <Col xs='auto'>
-              <Button onClick={this.deleteTeacher} variant='danger'>Delete teacher</Button>
+              <Button onClick={this.deleteTeacher} variant='danger'>Supprimer </Button>
             </Col>
           </Row>
         </Popup>
@@ -91,14 +91,14 @@ class TeacherProfile extends Component {
               <Row>
 
                 <Col md={{ span: 8 }} lg={{ span: 8 }}>
-                  <p className="instructor" style={{ color: '#73726c' }}>INSTRUCTOR</p>
+                  <p className="instructor" style={{ color: '#73726c' }}>Instructeur</p>
                   <h1>{this.state.teacher.name} {this.state.teacher.surname} </h1>
                   <p><strong>{this.state.teacher.jobOccupation}</strong></p>
                   <hr></hr>
                   {this.props.teacherInfo && this.props.teacherInfo._id === this.state.teacher._id ?
-                    <h3><strong>About me</strong></h3>
+                    <h3><strong>A propos de moi</strong></h3>
                     :
-                    <h3><strong>About the theacher</strong></h3>}
+                    <h3>A propos de l'instructeur</h3>}
 
                   <p>{this.state.teacher.description}</p>
                 </Col>
@@ -129,7 +129,7 @@ class TeacherProfile extends Component {
                           <Link to='/profile-teacher/edit-teacher' className="teacher-edit mt-5">Modifier profile</Link>
                           <Button onClick={() => this.handleModal(true)} className="teacher-delete">Supprimer compte Instructeur</Button>
                           
-                          <Link to='/profile-teacher/create-course' className="course-add mt-5">Créer un cour</Link>
+                          <Link to='/profile-teacher/create-course' className="course-add mt-5">Créer un certificat</Link>
                         </>}
                     </Row>
                   </aside>
@@ -142,9 +142,9 @@ class TeacherProfile extends Component {
               <Row>
                 <Col md={12}>
                   {this.props.teacherInfo && this.props.teacherInfo._id === this.state.teacher._id ?
-                    <h2 className="mt-5 mb-5">My Courses</h2>
+                    <h2 className="mt-5 mb-5">Mes Certificats</h2>
                     :
-                    <h2 className="mt-5 mb-5">Teacher's Courses</h2>}
+                    <h2 className="mt-5 mb-5"> Certificats de l'instructeur</h2>}
                 </Col>
               </Row>
 
@@ -157,15 +157,15 @@ class TeacherProfile extends Component {
                     ?
                     <Col className="cta">
                       <Row className="d-flex justify-content-between">
-                        <p className="mt-2 mb-0">Let's start teaching, <strong>{this.state.teacher.name}</strong>! Create an Engaging Course.</p>
-                        <Link to='/profile-teacher/create-course' className="btn btn-success ">Create new course</Link>
+                        <p className="mt-2 mb-0">Commençons à enseigner, <strong>{this.state.teacher.name}</strong>! Créer un certificat engageant.</p>
+                        <Link to='/profile-teacher/create-course' className="btn btn-success ">Créer un nouveau certificat</Link>
                       </Row>
                     </Col>
                     :
                     <Col className="cta">
                       <Row className="d-flex justify-content-between">
-                        <p className="mt-2 mb-0">This teacher hasn't created couerses yet.</p>
-                        <Link to='/courses' className="btn btn-success ">See more courses</Link>
+                        <p className="mt-2 mb-0">Cet instructeur n'a pas encore créé de certificats.</p>
+                        <Link to='/courses' className="btn btn-success ">Voir plus de certificats</Link>
                       </Row>
                     </Col>
                 }
@@ -176,7 +176,7 @@ class TeacherProfile extends Component {
             <Loader />
           }
 
-          <Link to="/teachers" className="btn btn-outline-dark mt-5">Go back</Link>
+          <Link to="/teachers" className="btn btn-outline-dark mt-5">Retour</Link>
         </Container>
       </motion.div>
     )

@@ -5,7 +5,7 @@ const Alert = ({ show, toastText, color, handleToast }) => {
     <Toast show={show} onClose={() => handleToast(false)} delay={5000} autohide style={{ position: 'fixed', bottom: 30, right: 10, width: 500, backgroundColor: `${color}` }}>
       <Toast.Header>
         <img src={logo} className="rounded mr-2" alt="system logo" style={{ width: 20, height: 20 }} />
-        <strong className="mr-auto">System message</strong>
+        <strong className="mr-auto">Message système</strong>
       </Toast.Header>
       <Toast.Body>{toastText}</Toast.Body>
     </Toast>

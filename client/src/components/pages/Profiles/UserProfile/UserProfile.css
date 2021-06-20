@@ -9,7 +9,7 @@
     border-bottom-left-radius: .25rem;
     border-top-right-radius: .25rem;
     border-bottom-right-radius: .25rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08)
+    box-shadow: 10px 5px 5px #b8ceec;
 }
 
 .user-details article {
@@ -49,10 +49,13 @@
 }
 
 .user-profile h1{
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
     letter-spacing: -.02rem;
     font-size: 2.5rem;
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .user-profile h2{
@@ -61,6 +64,9 @@
     line-height: 1.2;
     letter-spacing: -.02rem;
     font-size: 1.75rem;
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 
@@ -129,4 +135,10 @@
         flex-direction: column;
         align-items:center
     }
+}
+
+.edit-h {
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+    -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

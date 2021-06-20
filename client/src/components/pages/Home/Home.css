@@ -84,7 +84,13 @@ h3{
     text-align:center;
     border-top: var(--accent-width,5px) solid var(--accent-color, #fff);
 }
-
+.text {
+    font-size: 33px;
+    font-weight: 600px;
+    background: linear-gradient(to right, #3a7bd5, #3a6073);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .banner{
     background: url(../../../assets/ProfImg.jpg);
     background-size: cover;
@@ -94,11 +100,19 @@ h3{
     height: 450px;
 }
 .banner p {
-    font-size:1.2em;
+    font-size:1.3em;
+}
+.banner h2 {
+    font-family: Helvetica,Arial,sans-serif;
+    font-weight: 1000;
+    line-height: 1.2;
+    letter-spacing: -.02rem;
+    font-size: 1.75rem;
 }
 
 .features{
     padding: 50px 0px;
+    margin-top: 8%;
 }
 
 .features .home-card{

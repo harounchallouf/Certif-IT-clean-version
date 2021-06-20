@@ -6,9 +6,6 @@ import FilesService from '../../../../service/upload.service'
 import Loader from '../../../shared/Spinner/Loader'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Form, Button } from 'react-bootstrap'
-
-
-
 class EditUserForm extends Component {
     constructor() {
         super()
@@ -37,11 +34,11 @@ class EditUserForm extends Component {
             .then(user => {
                 this.props.storeUser(user.data)
                 this.props.history.push('/profile')
-                this.props.handleToast(true, 'Edit successful!', '#d4edda')
+                this.props.handleToast(true, 'Modification réussie !', '#d4edda')
             })
             .catch(() => {
                 this.props.history.push('/profile')
-                this.props.handleToast(true, 'An error has occurred, please try again later', '#f8d7da')
+                this.props.handleToast(true, 'Un erreur est survenue, veuillez réessayer plus tard', '#f8d7da')
             })
     }
 
@@ -64,19 +61,19 @@ class EditUserForm extends Component {
 
     render() {
         return (
-            <motion.div initial='initial' animate='in' exit='out' variants={pageVariants} transition={pageTransition}>
+            <motion.div initial='initial' animate='in' exit='out' variants={pageVariants} transition={pageTransition} style={{marginTop: '3%'}}>
 
                 <Container>
                     <Row>
                         <Col lg={{ span: 6, offset: 3 }}>
-                            <h1 className="mt-5">Edit User Profile</h1>
+                            <h1 className="mt-5 edit-h">Modifier mon profile</h1>
                             <hr />
 
                             <Form validated={this.validated} onSubmit={this.handleSubmit}>
 
                                 <Form.Row>
                                     <Form.Group as={Col} controlId='username'>
-                                        <Form.Label>Username</Form.Label>
+                                        <Form.Label>Pseudo</Form.Label>
                                         <Form.Control
                                             required
                                             type='text'
@@ -88,7 +85,7 @@ class EditUserForm extends Component {
 
                                 <Form.Row>
                                     <Form.Group as={Col} md='7' controlId='email'>
-                                        <Form.Label>Email address</Form.Label>
+                                        <Form.Label>Email</Form.Label>
                                         <Form.Control
                                             required
                                             type='email'
@@ -98,23 +95,23 @@ class EditUserForm extends Component {
                                     </Form.Group>
 
                                     <Form.Group as={Col} md='5' controlId='role'>
-                                        <Form.Label>Choose role</Form.Label>
+                                        <Form.Label>Choisissez votre role</Form.Label>
                                         <Form.Control as='select' name='role' value={this.state.user.role} onChange={this.handleInputChange}>
-                                            <option>Student or Teacher?</option>
-                                            <option value='Student' >Student</option>
-                                            <option value='Teacher' >Teacher</option>
+                                            <option>Apprenant ou Instructeur?</option>
+                                            <option value='Student' >Apprenant</option>
+                                            <option value='Teacher' >Instructeur</option>
                                         </Form.Control>
                                     </Form.Group>
                                 </Form.Row>
 
                                 <Form.Group className="mt-3">
-                                    <Form.Label>Imagen (file: jpg or png) {this.state.uploadingActive && <Loader />}</Form.Label>
+                                    <Form.Label>Imagen (fichier: jpg ou png) {this.state.uploadingActive && <Loader />}</Form.Label>
                                     <Form.Control type="file" onChange={this.handleImageUpload} />
                                 </Form.Group>
 
-                                <Button className="mt-3 add-course" type='submit' disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'Image loading...' : 'Save changes'}</Button>
+                                <Button className="mt-3 add-course" type='submit' disabled={this.state.uploadingActive}>{this.state.uploadingActive ? 'Chargement de l\'image...' : 'Sauvegarder les modifications'}</Button>
                             </Form>
-                            {this.state.uploadingActive || <Link to='/profile' className="btn btn-outline-dark mt-5" style={{ marginBottom: '200px'}} disabled>Go back</Link>}
+                            {this.state.uploadingActive || <Link to='/profile' className="btn btn-outline-dark mt-5" style={{ marginBottom: '200px'}} disabled>Retour</Link>}
                         </Col>
                     </Row>
 
